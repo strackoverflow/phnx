@@ -1,4 +1,4 @@
-// TODO: Profile list listeners, SYM key, user buttons (follow, mention, DM, block/spam)
+// TODO: Profile list listeners, user buttons (follow, mention, DM, block/spam)
 
 function MainAssistant() {
 
