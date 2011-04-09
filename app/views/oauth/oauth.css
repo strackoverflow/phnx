@@ -1,0 +1,86 @@
+.palm-menu-icon.load-progress {
+      background-image: url(progress-indicator.png);
+      width: 48px;
+      height: 48px;
+      left: -24px;
+      margin-top: -8px;
+}
+
+.palm-menu-icon.load-progress.progress-0 {
+      background-position: 0px 0px;
+}
+.palm-menu-icon.load-progress.progress-1 {
+      background-position: 0px -48px;
+}
+.palm-menu-icon.load-progress.progress-2 {
+      background-position: 0px -96px;
+}
+.palm-menu-icon.load-progress.progress-3 {
+      background-position: 0px -144px;
+}
+.palm-menu-icon.load-progress.progress-4 {
+      background-position: 0px -192px;
+}
+.palm-menu-icon.load-progress.progress-5 {
+      background-position: 0px -240px;
+}
+.palm-menu-icon.load-progress.progress-6 {
+      background-position: 0px -288px;
+}
+.palm-menu-icon.load-progress.progress-7 {
+      background-position: 0px -336px;
+}
+.palm-menu-icon.load-progress.progress-8 {
+      background-position: 0px -384px;
+}
+.palm-menu-icon.load-progress.progress-9 {
+      background-position: 0px -432px;
+}
+.palm-menu-icon.load-progress.progress-10 {
+      background-position: 0px -480px;
+}
+.palm-menu-icon.load-progress.progress-11 {
+      background-position: 0px -528px;
+}
+.palm-menu-icon.load-progress.progress-12 {
+      background-position: 0px -576px;
+}
+.palm-menu-icon.load-progress.progress-13 {
+      background-position: 0px -624px;
+}
+.palm-menu-icon.load-progress.progress-14 {
+      background-position: 0px -672px;
+}
+.palm-menu-icon.load-progress.progress-15 {
+      background-position: 0px -720px;
+}
+.palm-menu-icon.load-progress.progress-16 {
+      background-position: 0px -768px;
+}
+.palm-menu-icon.load-progress.progress-17 {
+      background-position: 0px -816px;
+}
+.palm-menu-icon.load-progress.progress-18 {
+      background-position: 0px -864px;
+}
+.palm-menu-icon.load-progress.progress-19 {
+      background-position: 0px -912px;
+}
+.palm-menu-icon.load-progress.progress-20 {
+      background-position: 0px -960px;
+}
+.palm-menu-icon.load-progress.progress-21 {
+      background-position: 0px -1008px;
+}
+.palm-menu-icon.load-progress.progress-22 {
+      background-position: 0px -1056px;
+}
+.palm-menu-icon.load-progress.progress-23 {
+      background-position: 0px -1104px;
+}
+.palm-menu-icon.load-progress.progress-24 {
+      background-position: 0px -1152px;
+}
+.palm-menu-icon.load-progress.progress-25 {
+      background-position: 0px -1200px;
+}

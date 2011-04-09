@@ -1,0 +1,7 @@
+function AppAssistant(){
+	
+}
+
+AppAssistant.prototype = {
+	
+}

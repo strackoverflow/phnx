@@ -1,0 +1,47 @@
+	Read me V1.4 - 20/7 - 2010
+(revised read-me file - License change)
+
+This is the Read me file that comes with the original version of Comfortaa - It does not have to be distributed with any derivative works.
+
+	Thank you for downloading Comfortaa!
+
+If you like Comfortaa and use it, you are very welcome to leave a donation!
+Making fonts is much work and even a very small amount of money will be highly appreciated,
+encouraging me to keep making fonts available free of charge.  
+To make a donation, use the link "donate" included in the comfortaa folder.
+
+(Note that it is entirely up to you if you want to leave a donation, and not doing so should by no means ethically stop you from using Comfortaa)
+
+
+
+	To install:
+
+Windows:
+Copy the font files to C:\windows\fonts
+
+Mac:
+Put the files into /Library/Fonts (for all users),
+or into /Users/Your_username/Library/Fonts (for you only).
+
+Linux:
+Copy the font files to fonts:// in the File manager
+
+
+I hope you will enjoy using it.
+
+
+
+	Copyright information:
+
+Comfortaa is free for personal/noncommercial use, AND commercial use.
+
+Comfortaa is licensed under the SIL Open Font License, Version 1.1.
+http://scripts.sil.org/OFL
+This is the standard license of open source fonts and has very few restrictions. Read the "OFL - Font License" file included in the Comfortaa folder for detailed information on the license.  
+
+If you still have questions or comments, you are very welcome to write to my email: aajohan@gmail.com
+
+
+
+		20/7 - 2010
+		Johan Aakerlund

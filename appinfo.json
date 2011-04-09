@@ -1,0 +1,10 @@
+{
+	"id": "com.prettyappmachine.phnx.beta",
+	"version": "0.7.1",
+	"vendor": "Pretty App Machine",
+	"type": "web",
+	"main": "index.html",
+	"title": "phnx",
+	"icon": "icon64.png",
+	"splashicon": "icon256.png"
+}

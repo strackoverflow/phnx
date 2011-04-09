@@ -1,0 +1,125 @@
+<div id="scene-wrapper">
+	<div id="header-float">
+		<div id="header" x-mojo-element="Scroller">
+			<div id="nav-list" x-mojo-element="List"></div>
+		</div>
+	</div>
+	<div id="shadow"></div>
+	<div id="scene-container">
+		<div x-mojo-element="Scroller" id="sideScroller">
+		    <div id="scrollItems" class="scrollerContainer">
+		    	<!-- seemed like a nice place to place a comment -->
+		    </div>
+		</div>
+		<div id="convo-panel">
+			<div id="convo-title">conversation</div>
+			<div id="fade-top" x-mojo-scroll-fade="top"></div>
+			<div id="convo-scroller" x-mojo-element="Scroller">
+				<div id="convo-list" x-mojo-element="List"></div>
+			</div>
+			<div id="fade" x-mojo-scroll-fade="bottom"></div>
+		</div>
+		<div id="profile-panel">
+			<div id="profile-header">
+				<div id="profile-avatar"></div>
+				<div id="profile-titles">
+					<div id="profile-name"></div>
+					<div id="profile-location"></div>
+					<div id="profile-url"></div>
+				</div>
+				<div id="profile-buttons">
+					<div id="follow-button" class="profile-button"></div>
+					<div id="unfollow-button" class="profile-button"></div>
+				</div>
+				<div id="profile-nav">
+					<div id="profile-btn-info" class="active">info</div>
+					<div id="profile-btn-tweets">tweets</div>
+					<!-- <div id="profile-btn-mentions">mentions</div> -->
+					<div id="profile-btn-favorites">favorites</div>
+				</div>
+			</div>
+			<div x-mojo-element="Scroller" id="profile-side-scroller">
+			    <div id="profile-scrollItems" class="profile-scrollerContainer">
+					<div class="profile-panel" id="profile-panel-info">
+						<div id="info-scroller" x-mojo-element="Scroller">
+							<table border="0" cellpadding="0" cellspacing="0" align="center">
+								<tr>
+									<td id="profile-tweets-count" class="profile-count" align="center"></td>
+									<td id="profile-following-count" class="profile-count" align="center"></td>
+									<td id="profile-followers-count" class="profile-count" align="center"></td>
+								</tr>
+								<tr>
+									<td class="count-label" align="center">tweets</td>
+									<td class="count-label" align="center">following</td>
+									<td class="count-label" align="center">followers</td>
+								</tr>
+							</table>
+							<div id="profile-bio"></div>
+						</div>
+					</div>
+					<div class="profile-panel" id="profile-panel-tweets">
+						<div id="profile-tweets-scroller" x-mojo-element="Scroller">
+							<div id="profile-tweets-list" x-mojo-element="List"></div>
+						</div>
+					</div>
+					<!-- <div class="profile-panel" id="profile-panel-mentions">
+						<div id="profile-mentions-scroller" x-mojo-element="Scroller">
+							<div id="profile-mentions-list" x-mojo-element="List"></div>
+						</div>
+					</div> -->
+					<div class="profile-panel" id="profile-panel-favorites">
+						<div id="profile-favorites-scroller" x-mojo-element="Scroller">
+							<div id="profile-favorites-list" x-mojo-element="List"></div>
+						</div>
+					</div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="command-bar" class="command-icons black">
+	<div id="home-commands">
+		<div id="new-tweet" class="command-button small" x-mojo-tap-highlight="immediate"></div>
+		<div id="submit-tweet" class="command-button small" x-mojo-tap-highlight="immediate" style="display: none;"></div>
+		<div id="refresh" class="command-button small" x-mojo-tap-highlight="immediate"></div>	
+	</div>
+</div>
+<div id="compose">
+	<textarea id="txtTweet"></textarea>
+	<div id="counter">140</div>
+	<div id="compose-instructions">
+		&nbsp;
+		<!-- Tap &amp; hold for options... -->
+	</div>
+	<div id="arrow"></div>
+</div>
+<div id="tweet-bar" class="command-icons black">
+	<div id="tweet-details"></div>
+	<div align="center">
+		<div id="delete" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+		<div id="dm" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+		<div id="reply" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+		<div id="retweet" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+		<div id="favorite" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+		<!-- <div id="profile" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div> -->
+		<div id="convo" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>	
+	</div>
+</div>
+<div id="rt-bar" class="command-icons black">
+	<div align="center">
+		<div id="confirm-rt" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+		<div id="edit-rt" class="command-button bar-btn" x-mojo-tap-highlight="immediate"></div>
+	</div>
+</div>
+<div id="shim"></div>
+<div id="accounts-panel">
+	<div id="accounts-scroller" x-mojo-element="Scroller">
+		<div id="accounts-list" x-mojo-element="List"></div>
+	</div>
+	<div class="account-controls">
+		<div id="new-account" class="command-button small" x-mojo-tap-highlight="immediate"></div>
+	</div>
+</div>
+<div id="image-preview" align="center">
+	<img id="preview" src="" />
+</div>

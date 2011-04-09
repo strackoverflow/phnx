@@ -1,0 +1,34 @@
+[
+    {"source": "app/assistants/stage-assistant.js"},
+    {"source": "app/assistants/app-assistant.js"},
+    {"source": "app/helpers/app.js"},
+    {"source": "app/helpers/date.js"},
+    {"source": "app/helpers/text.js"},
+    {"source": "app/helpers/resource.js"},
+    {"source": "app/global/app-globals.js"},
+    {"source": "app/config/config.js"},
+    {"source": "app/models/user.js"},
+    {"source": "app/models/panel.js"},
+    {"source": "lib/OAuth/OAuth.js"},
+    {"source": "lib/OAuth/SHA1.js"},
+    {"source": "lib/Lawnchair/Lawnchair.js"},
+    {"source": "lib/Lawnchair/adaptors/LawnchairAdaptorHelpers.js"},
+    {"source": "lib/Lawnchair/adaptors/WebkitSQLiteAdaptor.js"},
+    {"source": "lib/Lawnchair/adaptors/CookieAdaptor.js"},
+    {
+        "scenes": "oauth",
+        "source": "app/assistants/oauth-assistant.js"
+    },
+    {
+        "scenes": "finishAuth",
+        "source": "app/assistants/finishAuth-assistant.js"
+    },
+    {
+        "scenes": "launch",
+        "source": "app/assistants/launch-assistant.js"
+    },
+    {
+        "scenes": "main",
+        "source": "app/assistants/main-assistant.js"
+    }
+]
