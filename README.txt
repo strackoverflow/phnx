@@ -1,5 +1,5 @@
 ============================================
-			phnx - a twitter app			
+ phnx - a twitter app			
 ============================================
 
 Author: 	David Strack 
