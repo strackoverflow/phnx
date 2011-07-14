@@ -1,0 +1,71 @@
+<!-- <div id="toaster-#{-toasterId}" class="toaster profile">
+	<div class="profile-header">
+		<div id="profile-#{-toasterId}" class="profile-avatar"></div>
+		<div class="profile-titles">
+			<div class="profile-name">#{-name} (#{-screen_name})</div>
+			<div class="profile-location">#{-location}</div>
+			<div class="profile-url">#{-url}</div>
+		</div>
+		<div class="profile-nav">
+			<div id="profile-info-#{-toasterId}" class="profile-info active">info</div>
+			<div id="profile-tweets-#{-toasterId}" class="profile-tweets">tweets</div>
+			<div id="profile-favorites-#{-toasterId}" class="profile-favorites">favorites</div>
+		</div>
+	</div>
+	<div x-mojo-element="Scroller" id="profile-side-scroller-#{-toasterId}">
+	    <div id="profile-scrollItems-#{-toasterId}" class="profile-scrollerContainer">
+			<div class="profile-panel" id="profile-panel-info-#{-toasterId}">
+				<div id="info-scroller-#{-toasterId}" x-mojo-element="Scroller">
+					<table border="0" cellpadding="0" cellspacing="0" align="center">
+						<tr>
+							<td id="profile-tweets-count-#{-toasterId}" class="profile-count" align="center"></td>
+							<td id="profile-following-count-#{-toasterId}" class="profile-count" align="center"></td>
+							<td id="profile-followers-count-#{-toasterId}" class="profile-count" align="center"></td>
+						</tr>
+						<tr>
+							<td class="count-label" align="center">tweets</td>
+							<td class="count-label" align="center">following</td>
+							<td class="count-label" align="center">followers</td>
+						</tr>
+					</table>
+					<div class="profile-bio">#{-description}</div>
+				</div>
+			</div>
+			<div class="profile-panel" id="profile-panel-tweets-#{-toasterId}">
+				<div id="profile-tweets-scroller-#{-toasterId}" x-mojo-element="Scroller">
+					<div id="profile-tweets-list-#{-toasterId}" x-mojo-element="List"></div>
+				</div>
+			</div>
+			<div class="profile-panel" id="profile-panel-favorites-#{-toasterId}">
+				<div id="profile-favorites-scroller-#{-toasterId}" x-mojo-element="Scroller">
+					<div id="profile-favorites-list-#{-toasterId}" x-mojo-element="List"></div>
+				</div>
+			</div>
+	    </div>
+	</div>
+</div> -->
+<div id="toaster-#{-toasterId}" class="toaster profile">
+	<div class="profile-header">
+		<div id="profile-#{-toasterId}" class="profile-avatar" style="background-image: url(http://api.twitter.com/1/users/profile_image/#{-screen_name}.json?size=bigger)"></div>
+		<div class="profile-titles">
+			<div class="profile-name">#{-name}</div>
+			<div class="profile-location">#{-location}</div>
+			<div class="profile-url">#{-url}</div>
+		</div>
+	</div>
+	<div class="profile-details">
+		<table border="0" cellpadding="0" cellspacing="0" align="center">
+			<tr>
+				<td id="profile-tweets-count-#{-toasterId}" class="profile-count" align="center"></td>
+				<td id="profile-following-count-#{-toasterId}" class="profile-count" align="center"></td>
+				<td id="profile-followers-count-#{-toasterId}" class="profile-count" align="center"></td>
+			</tr>
+			<tr>
+				<td class="count-label" align="center">tweets</td>
+				<td class="count-label" align="center">following</td>
+				<td class="count-label" align="center">followers</td>
+			</tr>
+		</table>
+		<div class="profile-bio">#{-description}</div>
+	</div>
+</div>

@@ -3,10 +3,19 @@
 <head>
 	<title>phnx</title>
 	<script src="/usr/palm/frameworks/mojo/mojo.js" type="text/javascript" x-mojo-version="1"></script>
-	<link rel="stylesheet" href="stylesheets/icons.css" type="text/css" media="screen">
 	<link href="stylesheets/phnx.css" media="screen" rel="stylesheet" type="text/css">
 </head>
-<body>
-
+<body id="body" class="default">
+	<!-- <div id="loading">Loading...</div> -->
+	<!-- <div id="loading"><div id="loading-panel"><img src="images/low/loading.gif" /></div></div> -->
+	<div id="loading" class="ignore"></div>
+	<div id="account-shim">
+		<!-- This is where the account icon appears when the app is minimized -->
+	</div>
+	<div id="shim" class="ignore">
+		<!-- This is a dark shim that covers the content underneath toasters -->
+	</div>
+	<!-- Pre-load the account icon so it usually appears instantly -->
+	<img src="" id="preload" height="0" width="0" />
 </body>
 </html>

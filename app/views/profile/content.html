@@ -1,0 +1,82 @@
+<div id="profile-header">
+	<div class="profile-avatar-wrapper">
+		<div id="profile-avatar" style="background-image: url(http://api.twitter.com/1/users/profile_image/#{-screen_name}.json?size=bigger)"></div>
+	</div>
+	<div class="profile-title-wrapper">
+		<div class="profile-name">#{-name}</div>
+		<div class="profile-username">@#{-screen_name}</div>
+	</div>
+	<div class="profile-options-wrapper">
+		<div id="options" x-mojo-tap-highlight="immediate"></div>
+	</div>
+	<div style="clear: both"></div>
+</div>
+<div id="profile-menubar" class="section-header">
+	<div class="profile-icon-wrapper">
+		<div id="btn-history" class="profile-icon history" x-mojo-tap-highlight="immediate"></div>
+		<div id="btn-mentions" class="profile-icon mentions" x-mojo-tap-highlight="immediate"></div>
+		<div id="btn-favorites" class="profile-icon favorites" x-mojo-tap-highlight="immediate"></div>
+		<div id="btn-info" class="profile-icon info" x-mojo-tap-highlight="immediate"></div>
+	</div>
+</div>
+<div x-mojo-element="Scroller" id="sideScroller" class="profileScroller">
+	<div id="scrollItems" class="profileScrollerContainer">
+		<div class="panel" id="panel-history">
+			<div id="history-scroller" x-mojo-element="Scroller">
+				<div x-mojo-element="List" id="list-history" class="timeline-list"></div>
+			</div>
+		</div>
+		<div class="panel" id="panel-mentions">
+			<div id="mentions-scroller" x-mojo-element="Scroller">
+				<div x-mojo-element="List" id="list-mentions" class="timeline-list"></div>
+			</div>
+		</div>
+		<div class="panel" id="panel-favorites">
+			<div id="favorites-scroller" x-mojo-element="Scroller">
+				<div x-mojo-element="List" id="list-favorites" class="timeline-list"></div>
+			</div>
+		</div>
+		<div class="panel" id="panel-info">
+			<div id="info-scroller" x-mojo-element="Scroller">
+				<div class="panel-list-wrapper">
+					<div id="verified" class="#{-verified}">
+						<span class="verified">Verified Account</span>
+					</div>
+					<div class="panel-list">
+						<div id="description" class="search-list-item first" x-mojo-tap-highlight="immediate">
+							#{-description}
+						</div>
+						<div id="location" class="search-list-item" x-mojo-tap-highlight="immediate">
+							#{-location}
+						</div>
+						<div id="url" class="search-list-item" x-mojo-tap-highlight="immediate">
+							#{-url}
+						</div>
+						<div class="search-list-item last" x-mojo-tap-highlight="immediate">
+							@#{-screen_name} <span id="follows-verb">does not follow</span> you</span>
+						</div>
+					</div>
+				</div>
+				<div class="panel-list-wrapper">
+					<div class="panel-list">
+						<div id="tweets" class="search-list-item first" x-mojo-tap-highlight="immediate">
+							<div class="profile-label">Tweets</div>
+							<div class="profile-value">#{-statuses_count}</div>
+							<div style="clear:both"></div>
+						</div>
+						<div id="following" class="search-list-item" x-mojo-tap-highlight="immediate">
+							<div class="profile-label">Following</div>
+							<div class="profile-value">#{-friends_count}</div>
+							<div style="clear:both"></div>
+						</div>
+						<div id="followers" class="search-list-item last" x-mojo-tap-highlight="immediate">
+							<div class="profile-label">Followers</div>
+							<div class="profile-value">#{-followers_count}</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,96 @@
+body.default {
+	background: url('../images/low/scene-top.png') left top repeat-x,url(../images/low/themes/ash/bg.png) no-repeat left top;
+}
+
+#header {
+	background: url('../images/low/themes/ash/header-bar.png') left -25px repeat-x;
+}
+.header-title {
+	color: #94989c;
+}
+#nav-bar {
+	background: url(../images/low/themes/ash/nav-bar.png) left bottom repeat-x;
+}
+.beacon {
+	background: url('../images/low/new-content.png') center bottom no-repeat;
+}
+#indicator {
+	background: url(../images/low/themes/ash/indicator.png) center center no-repeat;
+}
+.status-row, .user-row{
+	color: #d2d2d2;
+}
+.status-row a{
+	color: #bbb;
+}
+.tweet-footer{
+	color: #bbb;
+}
+.rt-button {
+	color: #d2d2d2;
+}
+.panel-list-title {
+	color: #d2d2d2;
+}
+.search-list-item {
+	color: #d2d2d2;
+}
+.top-tweet {
+	color: #f8f9b5;
+}
+#success-scene{
+	color: #fff;
+}
+.toaster-title{
+	color: #d2d2d2;
+	background: url('../images/low/title-bg.png') left bottom repeat-x;
+}
+/* Toasters */
+.toaster {
+	background: url('../images/low/themes/ash/toaster-bg.png') left top repeat-x;
+	color: #d2d2d2;
+}
+.toaster.compose {
+	background: url('../images/low/themes/ash/compose-bg.png') left top repeat-x;
+}
+.toaster-controls {
+	background: url('../images/low/toaster-controls.png') left top repeat-x;
+}
+.dm-title {
+	color: #d2d2d2;
+}
+.compose-txt {
+	-webkit-border-image: url('../images/low/textarea-border.png') 12 stretch;
+}
+.compose-txt textarea{
+	color: #fff;
+}
+.compose-txt .counter {
+	color: #4d5154;
+}
+.compose-opts {
+/*	background: url('../images/low/compose-opts-bg.png') left top repeat-x;*/
+}
+.compose-submit {
+	color: #fff;
+	-webkit-border-image: url(../images/low/buttons/submit.png) 9 stretch;
+}
+.compose-submit.selected {
+	-webkit-border-image: url(../images/low/buttons/submit-tapped.png) 9 stretch;	
+}
+
+.scene-title {
+	color: #d2d2d2;
+}
+.section-header span {
+	color: #d2d2d2;
+}
+.pref-row-wrapper .title {
+	color: #d2d2d2;
+}
+.profile-title-wrapper {
+	color: #d2d2d2;
+}
+#verified span{
+	color: #d2d2d2;
+}

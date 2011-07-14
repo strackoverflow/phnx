@@ -1,18 +1,14 @@
-<div id="tweet-{-id_str}" x-mojo-tap-highlight='immediate' class="status-row #{-cssClass}">
-	<div class="palm-row-wrapper">
-		<table width="100%" border="0">
-		    <tr>
-		        <td valign="top" width="40">
-		        	<div class="tweet-avatar" style="background-image: url(#{-user.profile_image_url});"></div>
-		        </td>
-		        <td>
-		        	<div class="content-wrapper">
-			        	<div class='tweet-username'>#{-user.screen_name}</div>
-						<div class='tweet-text'>#{-text}</div>
-						<div class='tweet-footer'>#{-time_str} #{-source} #{-footer}</div>
-					</div>
-		        </td>
-		    </tr>
-		</table>
+<div class="item-row #{-cssClass}">
+	<div id="tweet-#{-id_str}" x-mojo-tap-highlight='immediate' class="status-row">
+		<div class="palm-row-wrapper row-wrapper">
+	       	<div class="tweet-avatar" style="background-image: url(#{-user.profile_image_url});"></div>
+	       	<div class="content-wrapper">
+	        	<div class='tweet-username'>#{-user.screen_name}</div>
+				<div class='tweet-text'>#{-text}</div>
+				<div class='tweet-footer'>#{-time_str} #{-via} #{-source} #{-footer}</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
 	</div>
+	<div id="gap" class="new-indicator" x-mojo-tap-highlight="immediate">#{-dividerMessage}</div>
 </div>

@@ -1,34 +1,77 @@
 [
-    {"source": "app/assistants/stage-assistant.js"},
-    {"source": "app/assistants/app-assistant.js"},
-    {"source": "app/helpers/app.js"},
-    {"source": "app/helpers/date.js"},
-    {"source": "app/helpers/text.js"},
-    {"source": "app/helpers/resource.js"},
-    {"source": "app/global/app-globals.js"},
-    {"source": "app/config/config.js"},
-    {"source": "app/models/user.js"},
-    {"source": "app/models/panel.js"},
-    {"source": "lib/OAuth/OAuth.js"},
-    {"source": "lib/OAuth/SHA1.js"},
-    {"source": "lib/Lawnchair/Lawnchair.js"},
-    {"source": "lib/Lawnchair/adaptors/LawnchairAdaptorHelpers.js"},
-    {"source": "lib/Lawnchair/adaptors/WebkitSQLiteAdaptor.js"},
-    {"source": "lib/Lawnchair/adaptors/CookieAdaptor.js"},
-    {
-        "scenes": "oauth",
-        "source": "app/assistants/oauth-assistant.js"
-    },
-    {
-        "scenes": "finishAuth",
-        "source": "app/assistants/finishAuth-assistant.js"
-    },
-    {
-        "scenes": "launch",
-        "source": "app/assistants/launch-assistant.js"
-    },
-    {
-        "scenes": "main",
-        "source": "app/assistants/main-assistant.js"
-    }
+	{"source": "app/config/config.js"},
+	{"source": "app/assistants/stage-assistant.js"},
+	{"source": "app/assistants/app-assistant.js"},
+	{"source": "app/helpers/bitly.js"},
+	{"source": "app/helpers/twitter.js"},
+	{"source": "app/helpers/tweet.js"},
+	{"source": "app/global/app-globals.js"},
+	{"source": "app/models/local.js"},
+	{"source": "app/models/account.js"},
+	{"source": "app/models/toaster.js"},
+	{"source": "app/models/toaster-chain.js"},
+	{"source": "app/models/metrix.js"},
+	{"source": "app/models/asyncWrappers.js"},
+	{"source": "app/assistants/toasters/retweet.js"},
+	{"source": "app/assistants/toasters/tweet.js"},
+	{"source": "app/assistants/toasters/convo.js"},
+	{"source": "app/assistants/toasters/profile.js"},
+	{"source": "app/assistants/toasters/compose.js"},
+	{"source": "app/assistants/toasters/status-list.js"},
+	{"source": "app/assistants/toasters/user-list.js"},
+	{"source": "app/assistants/toasters/search.js"},
+	{"source": "app/assistants/toasters/lookup.js"},
+	{"source": "app/assistants/toasters/confirm.js"},	
+	{"source": "lib/Ajax.js"},
+	{"source": "lib/Date.js"},
+	{"source": "lib/String.js"},
+	{"source": "lib/OAuth/OAuth.js"},
+	{"source": "lib/OAuth/SHA1.js"},
+	{"source": "lib/Lawnchair/Lawnchair.js"},
+	{"source": "lib/Lawnchair/adaptors/LawnchairAdaptorHelpers.js"},
+	{"source": "lib/Lawnchair/adaptors/WebkitSQLiteAdaptor.js"},
+	{
+		"scenes": "oauth",
+		"source": "app/assistants/oauth-assistant.js"
+	},
+	{
+		"scenes": "finishAuth",
+		"source": "app/assistants/finishAuth-assistant.js"
+	},
+	{
+		"scenes": "launch",
+		"source": "app/assistants/launch-assistant.js"
+	},
+	{
+		"scenes": "main",
+		"source": "app/assistants/main-assistant.js"
+	},
+	{
+		"scenes": "dashboard",
+		"source": "app/assistants/dashboard-assistant.js"
+	},
+	{
+		"scenes": "stream",
+		"source": "app/assistants/stream-assistant.js"
+	},
+	{
+		"scenes": "pictureView",
+		"source": "app/assistants/pictureView-assistant.js"
+	},
+	{
+		"scenes": "preferences",
+		"source": "app/assistants/preferences-assistant.js"
+	},
+	{
+		"scenes": "profile",
+		"source": "app/assistants/profile-assistant.js"
+	},
+	{
+		"scenes": "status",
+		"source": "app/assistants/status-assistant.js"
+	},
+	{
+		"scenes": "about",
+		"source": "app/assistants/about-assistant.js"
+	}
 ]

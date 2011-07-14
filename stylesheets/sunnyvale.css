@@ -1,0 +1,113 @@
+body.default {
+	background: #e4e4e2 url('../images/low/scene-top.png') left top repeat-x;
+	
+}
+
+#header {
+	background: url('../images/low/themes/sunnyvale/header-bar.png') left -25px repeat-x;
+}
+.header-title {
+	color: #fff;
+	background: url('../images/low/themes/sunnyvale/nav-icon-border.png') left bottom no-repeat, url('../images/low/themes/sunnyvale/nav-icon-border.png') right bottom no-repeat;
+}
+#nav-bar {
+	background: url(../images/low/themes/sunnyvale/nav-bar.png) left bottom repeat-x;
+}
+#nav-home {
+	background: url('../images/low/icons/tweets.png') center center no-repeat, url('../images/low/themes/sunnyvale/nav-icon-border.png') right 4px no-repeat;
+}
+#nav-mentions {
+	background: url('../images/low/icons/mentions.png') 22px center no-repeat, url('../images/low/themes/sunnyvale/nav-icon-border.png') right 4px no-repeat;
+}
+#nav-messages {
+	background: url('../images/low/icons/messages.png') 20px center no-repeat, url('../images/low/themes/sunnyvale/nav-icon-border.png') right 4px no-repeat;
+}
+#nav-lists {
+	background: url('../images/low/icons/lists.png') 20px center no-repeat, url('../images/low/themes/sunnyvale/nav-icon-border.png') right 4px no-repeat;
+}
+#nav-search {
+	background: url('../images/low/icons/search.png') 19px center no-repeat;
+}
+.beacon {
+	background: url('../images/low/new-content.png') center bottom no-repeat;
+}
+#indicator {
+	background: url(../images/low/themes/sunnyvale/indicator.png) center center no-repeat;
+}
+.status-row, .user-row{
+	color: #4d4d4d;
+}
+.status-row a{
+	color: #4d4d4d;
+}
+.tweet-footer{
+	color: #4d4d4d;
+}
+.rt-button {
+	color: #d2d2d2;
+}
+.panel-list-title {
+	color: #d2d2d2;
+}
+.search-list-item {
+	color: #d2d2d2;
+}
+.top-tweet {
+	color: #f8f9b5;
+}
+#success-scene{
+	color: #fff;
+}
+.toaster-title{
+	color: #d2d2d2;
+	background: url('../images/low/title-bg.png') left bottom repeat-x;
+}
+/* Toasters */
+.toaster {
+	background: url('../images/low/themes/sunnyvale/toaster-bg.png') left top repeat-x;
+	color: #fff;
+}
+.toaster.compose {
+	background: url('../images/low/themes/sunnyvale/toaster-bg.png') left 50px repeat-x;
+}
+.toaster-controls {
+	background: url('../images/low/toaster-controls.png') left top repeat-x;
+}
+.dm-title {
+	color: #fff;
+}
+.compose-txt {
+	-webkit-border-image: url('../images/low/textarea-border.png') 12 stretch;
+}
+.compose-txt textarea{
+	color: #fff;
+}
+.compose-txt .counter {
+	color: #4d5154;
+}
+.compose-opts {
+/*	background: url('../images/low/compose-opts-bg.png') left top repeat-x;*/
+}
+.compose-submit {
+	color: #fff;
+	-webkit-border-image: url(../images/low/buttons/submit.png) 9 stretch;
+}
+.compose-submit.selected {
+	-webkit-border-image: url(../images/low/buttons/submit-tapped.png) 9 stretch;	
+}
+
+.scene-title {
+	color: #d2d2d2;
+}
+.section-header span {
+	color: #d2d2d2;
+}
+.pref-row-wrapper .title {
+	color: #d2d2d2;
+}
+.profile-title-wrapper {
+	color: #d2d2d2;
+}
+#verified span{
+	color: #d2d2d2;
+}

@@ -1,8 +1,10 @@
 <div class="panel" id="panel-#{-id}">
 	<div id="#{-id}-scroller" x-mojo-element="Scroller">
-		<div x-mojo-element="List" id="list-#{-id}"></div>
-		<div class="load-more-wtf">
-			<img id="more-#{-id}" src="images/low/load-more.png" class="load-more" style="display: none" x-mojo-tap-highlight="immediate" />
+		<img src="images/low/list-spacer.png" width="5" height="39" />
+		<div x-mojo-element="List" id="list-#{-id}" class="timeline-list"></div>
+		<div id="more-#{-id}" class="load-more" x-mojo-tap-highlight="immediate">
+			Load More Tweets
 		</div>
+		<img src="images/low/list-spacer.png" width="5" height="45" />
 	</div>
 </div>

@@ -1,18 +1,17 @@
-<div id="tweet-details" class="status-row details">
-	<div class="palm-row-wrapper">
-		<table width="100%" border="0">
-		    <tr>
-		        <td valign="top" width="40">
-		        	<div id="user-avatar" class="tweet-avatar details" style="background-image: url(#{-user.profile_image_url});"></div>
-		        </td>
-		        <td>
-		        	<div class="content-wrapper">
-			        	<div class='tweet-username'>#{-user.screen_name}</div>
-						<div class='tweet-text'>#{-text}</div>
-						<div class='tweet-footer'>#{-time_str} #{-source} #{-footer}</div>
-					</div>
-		        </td>
-		    </tr>
-		</table>
-	</div>
+<div class="palm-row-wrapper">
+	<table width="100%" border="0">
+	    <tr>
+	        <td valign="top" width="40">
+	        	<div id="user-avatar" class="tweet-avatar details" style="background-image: url(#{-user.profile_image_url});"></div>
+				<div id="rt-#{-toasterId}" class="rt-wrapper"><span class="rt-button #{-rt_class}" x-mojo-tap-highlight="immediate">#{-retweet_count}</span></div>
+	        </td>
+	        <td>
+	        	<div class="content-wrapper">
+		        	<div class="tweet-username">#{-user.screen_name}</div>
+					<div class="tweet-text">#{-text}</div>
+					<div class="tweet-footer">#{-time_str} via #{-source}</div>
+				</div>
+	        </td>
+	    </tr>
+	</table>
 </div>

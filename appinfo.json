@@ -1,10 +1,16 @@
 {
-	"id": "com.prettyappmachine.phnx.beta",
-	"version": "0.7.1",
-	"vendor": "Pretty App Machine",
+	"id": "com.davidstrack.phnx",
+	"version": "1.1.1",
+	"vendor": "David Strack",
 	"type": "web",
 	"main": "index.html",
 	"title": "phnx",
 	"icon": "icon64.png",
-	"splashicon": "icon256.png"
+	"miniicon":"icon24.png",
+	"splashicon": "icon256.png",
+	"splashBackground":"splash-bg.png",
+	"keywords": ["twitter","tweet"],
+	"copyright": "Copyright 2011 David Strack",
+	"dockMode": false,
+	"noWindow": true
 }
