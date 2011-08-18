@@ -310,8 +310,11 @@ TwitterAPI.prototype = {
 					}
 					if (opts.silent !== true) {
 						// Out of sight, out of mind...
-						if (transport.status === 500 || transport.status === 502 || transport.status === 503 || transport.status === 401) {
+						if (transport.status === 500 || transport.status === 502 || transport.status === 503) {
 							global.fail();
+						}
+						else if (transport.status === 401) {
+							// do nothing, this is a weird 401 error.
 						}
 						else {
 							global.ex(transport.status + ': ' + transport.responseJSON.error);	
