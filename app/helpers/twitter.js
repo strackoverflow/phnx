@@ -140,11 +140,11 @@ TwitterAPI.prototype = {
 			}
 		}
 		
-		var prefs = new LocalStorage();
-		if (prefs.read('limitToLocale')) {
-			var locale = Mojo.Locale.getCurrentLocale();	
-			args.lang = locale;
-		}
+		// var prefs = new LocalStorage();
+		// if (prefs.read('limitToLocale')) {
+		// 	var locale = Mojo.Locale.getCurrentLocale();	
+		// 	args.lang = locale;
+		// }
 
 		this.plain('GET', url, args, callback);
 	},

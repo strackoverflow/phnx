@@ -51,7 +51,7 @@ function PreferencesAssistant() {
 					{label: 'Refresh All', value: 'all'},
 					{label: 'Refresh Current', value: 'current'}
 				]},
-				{key: 'limitToLocale', type: 'toggle', label: 'Exclude search results not in my own language'},
+				// {key: 'limitToLocale', type: 'toggle', label: 'Exclude search results not in my own language'},
 				{key: 'sendAnalytics', type: 'toggle', label: 'Send <strong>anonymous</strong> statistics to the developer to help improve phnx'}
 			]
 	};
