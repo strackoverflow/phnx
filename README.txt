@@ -7,12 +7,12 @@ Twitter:	@rmxdave
 Email: 		davidstrack@gmail.com
 Web:		http://davidstrack.com
 
-License:
-You may not reproduce any part of this application without written permission from the author. 
-Viewing or modifying source code for personal or educational purposes is permitted
-	- but you may NOT copy, distribute, or reproduce any portion of this application.
+phnx license:
+You may do whatever you want with this source code with the following conditions:
+ 1. You may not use reproductions, distributions, modifications, or any part of this source code or included images, graphics, or other media for commercial purposes
+ 2. You may not use the "phnx" name or marks, or David Strack, Pretty App Machine, (or rmxdave) in a manner that implies endorsement or "official" involvement.
+ 3. You must retain this license notice.
 
-Before you steal this app, remember that you are hurting a young developer and his family,
-not a large software company.
+Email davidstrack@gmail.com if you need an exception made to the license.
 
 Copyright 2010 - 2011 David Strack
