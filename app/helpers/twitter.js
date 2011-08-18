@@ -322,7 +322,7 @@ TwitterAPI.prototype = {
 			}
 			else {
 				this.toggleLoading(false);
-				ex('No internet connection.');
+				// ex('No internet connection.');
 			}
 		};
 		
