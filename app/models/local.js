@@ -15,7 +15,7 @@ function LocalStorage() {
 		refreshOnSubmit: false,
 		enterToSubmit: false,
 		sendAnalytics: true,
-		limitToLocale: true,
+		limitToLocale: false,
 		cardIcons: true,
 		forwardSwipe: 'current',
 		refreshOnMaximize: false
