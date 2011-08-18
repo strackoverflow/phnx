@@ -14,7 +14,7 @@ function MainAssistant(opts) {
 	this.searchLoaded = false;
 	this.switcher = false;
 	
-	this.count = 20; //how many tweets to load each request
+	this.count = 100; //how many tweets to load each request
 	this.renderLimit = 1000; //umm...this scares me. used in list widgets to prevent flickering...
 	this.toasters = new ToasterChain();
 }
@@ -560,6 +560,8 @@ MainAssistant.prototype = {
 				panel.gapStart = tweets[tweets.length - 1].id_str;
 				panel.gapEnd = model.items[0].id_str;
 			}
+			
+			hasGap = false; // ignore gap detection in this release
 			
 			var j;
 			for (j = loopCount; j >= 0; j--) {
