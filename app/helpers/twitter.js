@@ -35,7 +35,7 @@ var TwitterAPI = function(user, stageController) {
 		followUser: 'friendships/create',
 		unfollowUser: 'friendships/destroy',
 		rateLimit: 'account/rate_limit_status',
-		trends: 'trends',
+		trends: 'trends/1',
 		savedSearches: 'saved_searches',
 		newDM: 'direct_messages/new',
 		lists: 'lists',
