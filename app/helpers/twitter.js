@@ -109,7 +109,7 @@ TwitterAPI.prototype = {
 		}, {}, {});
 	},
 	trends: function(callback) {
-		this.sign('GET', this.url(this.endpoints.trends), callback, {}, {});
+		this.plain('GET', this.url(this.endpoints.trends), callback, {}, {});
 	},
 	getSavedSearches: function(callback) {
 		this.sign('GET', this.url(this.endpoints.savedSearches), callback, {}, {});
@@ -309,7 +309,7 @@ TwitterAPI.prototype = {
 						this.toggleLoading(false);
 					}
 					if (opts.silent !== true) {
-						// Out of sight, out of mind...
+						Mojo.Log.info('HTTP Failure ' + transport.status);
 						if (transport.status === 500 || transport.status === 502 || transport.status === 503) {
 							global.fail();
 						}
