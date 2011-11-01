@@ -376,7 +376,8 @@ MainAssistant.prototype = {
 		// Loads saved searches and trending topics
 		var Twitter = new TwitterAPI(this.user);
 		Twitter.trends(function(response){
-			var trends = response.responseJSON.trends;
+			var resp = response.responseJSON;
+			var trends = resp[0].trends;
 			this.trendingTopicsModel.items = trends;
 			this.controller.modelChanged(this.trendingTopicsModel);
 		}.bind(this));
@@ -928,20 +929,22 @@ MainAssistant.prototype = {
 	},
 	getRetweeted: function() {
 		// We load the tweets the user has retweeted in order to be able to undo the Retweets
-		this.user.retweeted = [];
-		this.user.retweetedItems = [];
-		var Twitter = new TwitterAPI(this.user);
-		Twitter.retweetsByMe(function(response) {
-			if (response.responseJSON.length > 0) {
-				var items = response.responseJSON;
-				this.user.retweetedItems = items;
-				
-				for (var i=0; i < items.length; i++) {
-					var rtId = items[i].retweeted_status.id_str;
-					this.user.retweeted.push(rtId);
-				}
-			}			
-		}.bind(this));
+		setTimeout(function(){
+			this.user.retweeted = [];
+			this.user.retweetedItems = [];
+			var Twitter = new TwitterAPI(this.user);
+			Twitter.retweetsByMe(function(response) {
+				if (response.responseJSON.length > 0) {
+					var items = response.responseJSON;
+					this.user.retweetedItems = items;
+
+					for (var i=0; i < items.length; i++) {
+						var rtId = items[i].retweeted_status.id_str;
+						this.user.retweeted.push(rtId);
+					}
+				}			
+			}.bind(this));
+		}.bind(this), 2000);
 	},
 	headerTapped: function(event) {
 		// Show the user's profile

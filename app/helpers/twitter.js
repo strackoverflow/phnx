@@ -109,7 +109,7 @@ TwitterAPI.prototype = {
 		}, {}, {});
 	},
 	trends: function(callback) {
-		this.plain('GET', this.url(this.endpoints.trends), callback, {}, {});
+		this.sign('GET', this.url(this.endpoints.trends), callback, {}, {});
 	},
 	getSavedSearches: function(callback) {
 		this.sign('GET', this.url(this.endpoints.savedSearches), callback, {}, {});
