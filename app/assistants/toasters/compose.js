@@ -149,7 +149,7 @@ var ComposeToaster = Class.create(Toaster, {
 		if (t.indexOf('packers') > -1) {
 			banner('Go Packers! :)');
 		}
-		else if (t.indexOf('phnx') > -1) {
+		else if (t.indexOf('phnx') > -1 && t.indexOf('phnx.ws') < -1) {
 			banner("Hey, that's me!");
 		}
 	},
@@ -210,13 +210,15 @@ var ComposeToaster = Class.create(Toaster, {
 		get('loading').addClassName('show');
 		var currentUser = getUser();
 		var args = [
+			{"key":"consumerKey","data": Config.key},
+			{"key":"consumerSecret","data": Config.secret},
 			{"key":"token","data": currentUser.token},
 			{"key":"secret","data": currentUser.secret}
 		];
 		this.controller.serviceRequest('palm://com.palm.downloadmanager/', {
 			method: 'upload', 
 			parameters: {
-				'url': 'http://phnxapp.com/twitpic/upload.php',
+				'url': 'http://photos.phnxapp.com/upload',
 				'fileLabel': 'photo',
 				'fileName': path,
 				'postParameters': args,

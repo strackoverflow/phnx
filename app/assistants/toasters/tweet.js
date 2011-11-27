@@ -276,6 +276,9 @@ var TweetToaster = Class.create(Toaster, {
 		else if (url.indexOf('.jpg') > -1 || url.indexOf('.png') > -1 || url.indexOf('.gif') > -1 || url.indexOf('.jpeg') > -1) {
 			this.showPreview(url);
 		}
+		else if (url.indexOf('http://phnx.ws/') > -1) {
+			this.showPreview(url + '/normal');
+		}
 		else{
 			global.openBrowser(url);
 		}
