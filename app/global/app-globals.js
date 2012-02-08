@@ -157,6 +157,19 @@ var global = {
 			Element.removeClassName(body, 'font-' + fonts[i]);
 		}
 		Element.addClassName(body, 'font-' + font);
+	},
+	showNavBar: function(navBar, spacers, visible) {
+	   var i;
+	   if (visible) {
+	     Element.addClassName(navBar, 'show');
+	     for (i=0; i<spacers.length; i++)
+	        Element.addClassName(spacers[i], 'show');
+	   }
+	   else {
+	      Element.removeClassName(navBar, 'show');
+	      for (i=0; i<spacers.length; i++)
+	        Element.removeClassName(spacers[i], 'show');
+	   }
 	}
 };
 
