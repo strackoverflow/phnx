@@ -1043,10 +1043,10 @@ MainAssistant.prototype = {
 		var font = prefs.read('fontSize');
 		global.setFontSize(body, font);
 		
-      	var navBar = this.controller.stageController.document.getElementById("nav-bar");
-      	var spacers = this.controller.stageController.document.getElementsByClassName("nav-bar-spacer");
-      	var showNavBar = prefs.read('showNavBar');
-      	global.showNavBar(navBar,spacers,showNavBar);
+      		var navBar = this.controller.stageController.document.getElementById("nav-bar");
+      		var spacers = this.controller.stageController.document.getElementsByClassName("nav-bar-spacer");
+      		var showNavBar = prefs.read('showNavBar');
+      		global.showNavBar(navBar,spacers,showNavBar);
 	},
 	deactivate: function(event) {
 		this.controller.get(this.controller.document).stopObserving("keyup");
