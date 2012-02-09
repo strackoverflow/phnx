@@ -29,7 +29,8 @@ function PreferencesAssistant() {
 				{key: 'cardIcons', type: 'toggle', label: 'Show card icons'},
 				{key: 'refreshOnMaximize', type: 'toggle', label: 'Auto Refresh'},
 				{key: 'refreshOnSubmit', type: 'toggle', label: 'Refresh after post'},
-				{key: 'enterToSubmit', type: 'toggle', label: 'Enter to submit'}
+				{key: 'enterToSubmit', type: 'toggle', label: 'Enter to submit'},
+				{key: 'showNavBar', type: 'toggle', label: 'Show navigation bar'}
 			],
 			'Notifications': [
 				{key: 'notifications', type: 'toggle', label: 'Notifications'},
@@ -135,6 +136,7 @@ PreferencesAssistant.prototype = {
 		// Manually add listeners after the elements are on the DOM
 		this.controller.listen(this.controller.get('select-theme'), Mojo.Event.propertyChange, this.themeChanged.bind(this));
 		this.controller.listen(this.controller.get('select-fontSize'), Mojo.Event.propertyChange, this.fontChanged.bind(this));
+		this.controller.listen(this.controller.get('toggle-showNavBar'), Mojo.Event.propertyChange, this.showNavBarChanged.bind(this));
 	},
 	themeChanged: function(event) {
 		var newTheme = event.value;
@@ -151,6 +153,11 @@ PreferencesAssistant.prototype = {
 		var body = this.controller.stageController.document.getElementsByTagName("body")[0];
 		global.setFontSize(body, event.value);
 	},
+	showNavBarChanged: function(event) {
+	   var navBar = this.controller.stageController.document.getElementById("nav-bar");
+	   var spacers = this.controller.stageController.document.getElementsByClassName("nav-bar-spacer");
+	   global.showNavBar(navBar,spacers,event.value);
+	},
 	cleanup: function() {
 		// Save preferences on exit.
 		for (var sectionId in this.sections) {
@@ -164,5 +171,6 @@ PreferencesAssistant.prototype = {
 		// Manually remove any listeners from above
 		this.controller.stopListening(this.controller.get('select-theme'), Mojo.Event.propertyChange, this.themeChanged);
 		this.controller.stopListening(this.controller.get('select-fontSize'), Mojo.Event.propertyChange, this.fontChanged);
+		this.controller.stopListening(this.controller.get('toggle-showNavBar'), Mojo.Event.propertyChange, this.showNavBarChanged);
 	}
 };
