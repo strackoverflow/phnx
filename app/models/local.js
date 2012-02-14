@@ -18,6 +18,7 @@ function LocalStorage() {
 		limitToLocale: false,
 		cardIcons: true,
 		forwardSwipe: 'current',
+		showNavBar: true,
 		refreshOnMaximize: false
 	};
 	
