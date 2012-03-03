@@ -325,6 +325,11 @@ body{
 	font-weight: bold;
 	display: inline-block;
 }
+.tweet-screenname{
+	font-weight: normal;
+	color: #999;
+	font-size: 85%;
+}
 .content-wrapper {
 	display: inline-block;
 	float: left;
