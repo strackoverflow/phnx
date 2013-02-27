@@ -163,11 +163,17 @@ ProfileAssistant.prototype = {
 	},
 	checkFollowing: function() {
 		var Twitter = new TwitterAPI(this.account);
-		Twitter.checkFollow(this.user.screen_name, this.account.id, function(response){
-			if (response.responseJSON) {
-				this.controller.get('follows-verb').update('follows');
+		Twitter.checkFollow(this.user.id_str, this.account.id, function(response) {
+			var following	= false;
+
+			try {
+				following = response.responseJSON.relationship.source.following;
+			} catch (e) {
 			}
-			else {
+
+			if (following) {
+				this.controller.get('follows-verb').update('follows');
+			} else {
 				this.controller.get('follows-verb').update('does not follow');
 				this.menuItems[2].disabled = true;
 			}
@@ -263,13 +269,17 @@ ProfileAssistant.prototype = {
 	},
 	getFavorites: function(opts) {
 		var Twitter = new TwitterAPI(this.account);
-		var args = {"count": 100, "include_entities": true};
-		
+		var args = {
+			count:				100,
+			include_entities:	true,
+			user_id:			this.user.id_str
+		};
+
 		for (var key in opts) {
 			args[key] = opts[key];
 		}
-		
-		Twitter.getFavorites(this.user.screen_name, args, function(response){
+
+		Twitter.getFavorites(args, function(response) {
 			var th = new TweetHelper();
 			for (var i=0; i < response.responseJSON.length; i++) {
 				var tweet = response.responseJSON[i];

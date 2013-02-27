@@ -211,7 +211,6 @@ MainAssistant.prototype = {
 		setTimeout(function(){
 			this.refreshAll();
 			this.loadLists();
-			this.getRetweeted();
 			// get the avatar for the minimized card
 			this.getUserAvatar();
 			
@@ -635,7 +634,7 @@ MainAssistant.prototype = {
 	loadLists: function() {
 		var Twitter = new TwitterAPI(this.user);
 		Twitter.userLists({'user_id':this.user.id}, function(response){
-			var lists = response.responseJSON.lists;
+			var lists = response.responseJSON;
 			if (lists.length > 0) {
 				if (lists.length === 1) {
 					this.controller.get('your-lists').addClassName('single');
@@ -896,25 +895,7 @@ MainAssistant.prototype = {
 			rtType: id
 		};
 		
-		if (id === 'rt-others') {
-			Twitter.retweetsToMe(function(response) {
-				if (response.responseJSON.length > 0) {
-					opts.name = 'RTs by Others';
-					opts.items = response.responseJSON;
-					this.controller.stageController.pushScene('status', opts);
-				}
-				else {
-					banner('Twitter did not find anything');
-				}
-			}.bind(this));
-		}
-		else if (id === 'rt-yours') {
-			// These were loaded when the app started so no need to get them again!
-			opts.name = 'RTs by You';
-			opts.items = this.user.retweetedItems;
-			this.controller.stageController.pushScene('status', opts);
-		}
-		else if (id === 'rt-ofyou') {
+		if (id === 'rt-ofyou') {
 			Twitter.retweetsOfMe(function(response) {
 				if (response.responseJSON.length > 0) {
 					opts.name = 'RTs of You';
@@ -926,25 +907,6 @@ MainAssistant.prototype = {
 				}				
 			}.bind(this));
 		}
-	},
-	getRetweeted: function() {
-		// We load the tweets the user has retweeted in order to be able to undo the Retweets
-		setTimeout(function(){
-			this.user.retweeted = [];
-			this.user.retweetedItems = [];
-			var Twitter = new TwitterAPI(this.user);
-			Twitter.retweetsByMe(function(response) {
-				if (response.responseJSON.length > 0) {
-					var items = response.responseJSON;
-					this.user.retweetedItems = items;
-
-					for (var i=0; i < items.length; i++) {
-						var rtId = items[i].retweeted_status.id_str;
-						this.user.retweeted.push(rtId);
-					}
-				}			
-			}.bind(this));
-		}.bind(this), 2000);
 	},
 	headerTapped: function(event) {
 		// Show the user's profile
@@ -964,8 +926,6 @@ MainAssistant.prototype = {
 	},
 	addListeners: function(event) {
 		this.controller.listen(this.controller.get('sideScroller'), Mojo.Event.propertyChange, this.scrollerChanged.bind(this));
-		this.controller.listen(this.controller.get('rt-others'), Mojo.Event.tap, this.rtTapped.bind(this));
-		this.controller.listen(this.controller.get('rt-yours'), Mojo.Event.tap, this.rtTapped.bind(this));
 		this.controller.listen(this.controller.get('rt-ofyou'), Mojo.Event.tap, this.rtTapped.bind(this));
 		this.controller.listen(this.controller.get('refresh'), Mojo.Event.tap, this.refreshTapped.bind(this));
 		this.controller.listen(this.controller.get('new-tweet'), Mojo.Event.tap, this.newTweet.bind(this));
@@ -1019,8 +979,6 @@ MainAssistant.prototype = {
 	},
 	stopListening: function() {
 		this.controller.stopListening(this.controller.get('sideScroller'), Mojo.Event.propertyChange, this.scrollerChanged);
-		this.controller.stopListening(this.controller.get('rt-others'), Mojo.Event.tap, this.rtTapped);
-		this.controller.stopListening(this.controller.get('rt-yours'), Mojo.Event.tap, this.rtTapped);
 		this.controller.stopListening(this.controller.get('rt-ofyou'), Mojo.Event.tap, this.rtTapped);
 		this.controller.stopListening(this.controller.get('refresh'), Mojo.Event.tap, this.refreshTapped);
 		this.controller.stopListening(this.controller.get('new-tweet'), Mojo.Event.tap, this.newTweet);

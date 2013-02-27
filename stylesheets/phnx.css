@@ -479,6 +479,15 @@ span.link{
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-top-right-radius: 10px;
 }
+.search-list-item.only {
+	background: none;
+	padding-bottom: 8px;
+	margin-bottom: -8px;
+	margin-top: -8px;
+
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}
 .search-list-item {
 	color: #d2d2d2;
 	font-size: 16px;

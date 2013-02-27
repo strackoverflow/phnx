@@ -157,13 +157,13 @@ var TweetToaster = Class.create(Toaster, {
 	createFavorite: function() {
 		var Twitter = new TwitterAPI(this.user);
 		if (this.tweet.favorited === false) {
-			Twitter.action('favorite', this.tweet.id_str, function(response, meta){
+			Twitter.favorite('favorite', this.tweet.id_str, function(response, meta){
 				this.tweet.favorited = true;
 				this.controller.get('favorite-' + this.id).addClassName('favorited');
 			}.bind(this));	
 		}
 		else {
-			Twitter.action('unfavorite', this.tweet.id_str, function(response){
+			Twitter.favorite('unfavorite', this.tweet.id_str, function(response){
 				this.tweet.favorited = false;
 				this.controller.get('favorite-' + this.id).removeClassName('favorited');
 			}.bind(this));

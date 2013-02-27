@@ -141,17 +141,7 @@ StatusAssistant.prototype = {
 		}
 		
 		var type = this.opts.rtType;
-		if (type === 'rt-others') {
-			Twitter.retweetsToMe(opts, function(r){
-				callback(r.responseJSON);
-			});
-		}
-		else if (type === 'rt-yours') {
-			Twitter.retweetsByMe(opts, function(r){
-				callback(r.responseJSON);
-			});
-		}
-		else if (type === 'rt-ofyou') {
+		if (type === 'rt-ofyou') {
 			Twitter.retweetsOfMe(opts, function(r){
 				callback(r.responseJSON);
 			});
