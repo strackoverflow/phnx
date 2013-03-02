@@ -20,23 +20,23 @@ var ComposeToaster = Class.create(Toaster, {
 		this.images = []; //any images to be uploaded
 		this.uploading = false;
 		this.sending = false;
-		
+
 		var toasterObj = {
 			toasterId: this.id
 		};
-		
+
 		if (opts.rt) {
 			this.rt = true;
 		}
-		
+
 		if (opts.dm) {
 			this.dm = true;
 			this.to = opts.user;
 			toasterObj.to = opts.user.screen_name;
 		}
-		
+
 		this.render(toasterObj, 'templates/toasters/compose');
-		
+
 		if (opts.text) {
 			var txt;
 			if (opts.text === '0') {
@@ -48,7 +48,7 @@ var ComposeToaster = Class.create(Toaster, {
 			get(this.textarea).value = txt;
 			this.updateCounter();
 		}
-		
+
 		// Select reply-all names at first
 		if (opts.selectStart && opts.selectEnd) {
 			get(this.textarea).selectionStart = opts.selectStart;
@@ -61,18 +61,18 @@ var ComposeToaster = Class.create(Toaster, {
 			var len = get(this.textarea).value.length;
 			get(this.textarea).setSelectionRange(len,len); //focus the cursor at the end
 		}
-		
+
 		if (opts.reply_id) {
 			this.reply = true;
 			this.reply_id = opts.reply_id;
 			get('submit-' + this.id).update('Post Reply');
 		}
-		
+
 		if (opts.dm) {
 			get('dm-' + this.id).addClassName('show');
 			get('submit-' + this.id).update('Send Message');
 		}
-		
+
 		// Need a timeout because sometimes the tapend event cancels the focus()
 		setTimeout(function(){
 			get(this.textarea).focus();
@@ -88,7 +88,7 @@ var ComposeToaster = Class.create(Toaster, {
 		var args;
 		if (txt.length <= this.availableChars && txt.length > 0) {
 			if (this.uploading === false) {
-				if (!this.dm) {		
+				if (!this.dm) {
 					this.easterEggs(txt); //display some joke banners teehee
 					args = {'status': txt};
 
@@ -97,40 +97,40 @@ var ComposeToaster = Class.create(Toaster, {
 					}
 
 					if (this.geo) {
-						args.lat = this.lat;
-						args.long = this.lng;
+						args['lat'] = this.lat;
+						args['long'] = this.lng;
 					}
 
 					Twitter.postTweet(args, function(response, meta) {
 						var prefs = new LocalStorage();
 						var refresh = prefs.read('refreshOnSubmit');
-						
+
 						if (refresh) {
 							this.assistant.refreshAll();
 						}
-						
+
 						if (!this.rt) {
-							this.assistant.toasters.back();							
+							this.assistant.toasters.back();
 						}
 						else {
 							// If it's a retweet we want to go back 2 toasters to close the RT toaster
 							this.assistant.toasters.backX(2);
 						}
-					}.bind(this));	
+					}.bind(this));
 				}
 				else if (this.dm) {
 					args = {'text': txt, 'user_id': this.to.id_str};
 					Twitter.newDM(args, function(response) {
 						var prefs = new LocalStorage();
 						var refresh = prefs.read('refreshOnSubmit');
-						
+
 						if (refresh) {
-							this.assistant.refreshAll();	
+							this.assistant.refreshAll();
 						}
-						
+
 						this.assistant.toasters.back();
 					}.bind(this));
-				}	
+				}
 			}
 			else {
 				ex('An upload is in progress.');
@@ -145,7 +145,7 @@ var ComposeToaster = Class.create(Toaster, {
 	},
 	easterEggs: function(t) {
 		t = t.toLowerCase();
-		
+
 		if (t.indexOf('packers') > -1) {
 			banner('Go Packers! :)');
 		}
@@ -153,9 +153,9 @@ var ComposeToaster = Class.create(Toaster, {
 			banner("Hey, that's me!");
 		}
 	},
-	geotagTapped: function(event) {		
+	geotagTapped: function(event) {
 		if (!this.geo) {
-			this.getLocation();	
+			this.getLocation();
 		}
 		else {
 			this.geo = false;
@@ -199,57 +199,58 @@ var ComposeToaster = Class.create(Toaster, {
 
 		Mojo.FilePicker.pickFile(params, this.controller.stageController);
 	},
-	addImage: function(path) {
-		this.images.push(path);
-		this.availableChars -= 25; // the twitpic url is 25 characters long
-		this.updateCounter();
-	},
 	upload: function(path) {
 		this.uploading = true;
 		get('submit-' + this.id).setStyle({'opacity': '.4'});
 		get('loading').addClassName('show');
-		var currentUser = getUser();
+
 		var args = [
-			{"key":"consumerKey","data": Config.key},
-			{"key":"consumerSecret","data": Config.secret},
-			{"key":"token","data": currentUser.token},
-			{"key":"secret","data": currentUser.secret}
+			{ key:"key",				data: Config.twitpicKey	},
+			{ key:"consumer_token",		data: Config.key		},
+			{ key:"consumer_secret",	data: Config.secret		},
+			{ key:"oauth_token",		data: this.user.token	},
+			{ key:"oauth_secret",		data: this.user.secret	},
+
+			{ key:"message",			data: ""				}
 		];
+
 		this.controller.serviceRequest('palm://com.palm.downloadmanager/', {
-			method: 'upload', 
+			method:				'upload',
 			parameters: {
-				'url': 'http://photos.phnxapp.com/upload',
-				'fileLabel': 'photo',
-				'fileName': path,
-				'postParameters': args,
-				'subscribe': true
+				url:			'http://api.twitpic.com/1/upload.json',
+				fileLabel:		'media',
+				fileName:		path,
+				postParameters:	args,
+				subscribe:		true
 			},
-			onSuccess: this.uploadSuccess.bind(this),
+
+			onSuccess: function(response) {
+				var ta = get(this.textarea);
+
+				if (response.completed) {
+					var result = Mojo.parseJSON(response.responseString);
+
+					this.uploading = false;
+					get('submit-' + this.id).setStyle({'opacity': '1'});
+					get('loading').removeClassName('show');
+
+					if (ta.value.length > 0) {
+						ta.value = ta.value + ' ';
+					}
+
+					ta.value = ta.value + result.url;
+					this.updateCounter();
+				}
+			}.bind(this),
+
 			onFailure: function() {
 				this.uploading = false;
+
 				get('submit-' + this.id).setStyle({'opacity': '1'});
 				get('loading').removeClassName('loading');
 				ex('Error uploading image.');
 			}
 		});
-	},
-	uploadPhotos: function() {
-		for (var i=0; i < this.images.length; i++) {
-			var img = this.images[i];
-			this.upload(img);
-		}
-	},
-	uploadSuccess: function(response) {
-		if (response.completed) {
-			this.uploading = false;
-			get('submit-' + this.id).setStyle({'opacity': '1'});
-			get('loading').removeClassName('show');
-			if (get(this.textarea).value.length > 0) {
-				get(this.textarea).value = get(this.textarea).value + ' ';
-			}
-			get(this.textarea).value = get(this.textarea).value + response.responseString;
-			this.updateCounter();	
-		}
 	},
 	linkTapped: function(event) {
 		var txt = this.controller.get(this.textarea).value;
@@ -259,15 +260,15 @@ var ComposeToaster = Class.create(Toaster, {
 			user: Config.bitlyUser,
 			key: Config.bitlyKey
 		});
-		
-		var callback = function(short, long){
-			this.controller.get(this.textarea).value = this.controller.get(this.textarea).value.replace(new RegExp(long, 'g'), short);
+
+		var callback = function(shrt, lng){
+			this.controller.get(this.textarea).value = this.controller.get(this.textarea).value.replace(new RegExp(lng, 'g'), shrt);
 		};
-		
+
 		for (var i=0; i < urls.length; i++) {
 			var u = urls[i];
 			if (u.indexOf('bit.ly') < 0) {
-				bitly.shorten(u, callback.bind(this));	
+				bitly.shorten(u, callback.bind(this));
 			}
 		}
 	},
@@ -279,7 +280,7 @@ var ComposeToaster = Class.create(Toaster, {
 					this.submitTweet();
 					e.stop();
 				}
-			}.bind(this));			
+			}.bind(this));
 		}
 
 		get(this.textarea).observe('keyup', function(e){
@@ -296,7 +297,7 @@ var ComposeToaster = Class.create(Toaster, {
 		if (prefs.read('enterToSubmit')) {
 			get(this.textarea.stopObserving('keydown'));
 		}
-		
+
 		Mojo.Event.stopListening(get('submit-' + this.id), Mojo.Event.tap, this.submitTweet);
 		Mojo.Event.stopListening(get('photo-' + this.id), Mojo.Event.tap, this.photoTapped);
 		Mojo.Event.stopListening(get('geotag-' + this.id), Mojo.Event.tap, this.geotagTapped);
