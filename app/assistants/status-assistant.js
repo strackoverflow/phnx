@@ -64,9 +64,15 @@ StatusAssistant.prototype = {
 		}
 		else {
 			// Search twitter for the items
+			var args = {
+				"count": 100,
+				"include_entities": true, 
+				"q": opts.query
+			};
 			var Twitter = new TwitterAPI(opts.user, this.controller.stageController);
-			Twitter.search(opts.query, function(r){
-				var items = r.responseJSON.results;
+			
+			Twitter.search(args, function(r){
+				var items = r.responseJSON.statuses;
 				this.setupList(items);
 			}.bind(this));
 		}
@@ -88,7 +94,7 @@ StatusAssistant.prototype = {
 		var type = this.opts.type;
 		for (var i=0; i < items.length; i++) {
 			if (type === 'search') {
-				items[i] = th.processSearch(items[i]);	
+				items[i] = th.processSearch(items[i]);
 			}
 			else if (type === 'list' || type === 'retweets') {
 				items[i] = th.process(items[i]);
@@ -101,22 +107,29 @@ StatusAssistant.prototype = {
 			"retweets": "item"
 		};
 		
+		//Mojo.Log.error('items: ' + JSON.stringify(items,null,4));
 		this.itemsModel.items = items;
-		this.controller.setupWidget('list-items', {itemTemplate: "templates/tweets/" + templates[type],listTemplate: "templates/list", renderLimit: 1000}, this.itemsModel);
+
+		this.controller.setupWidget('list-items',{itemTemplate: "templates/tweets/" + templates[type],listTemplate: "templates/list", renderLimit: 1000}, this.itemsModel);
 		this.controller.listen('list-items', Mojo.Event.listTap, this.tweetTapped.bind(this));
-		// this.controller.modelChanged(this.itemsModel);
+
+		 //this.controller.modelChanged(this.itemsModel);
 		this.updateCount();
 	},
 	refreshSearch: function() {
 		var Twitter = new TwitterAPI(this.opts.user, this.controller.stageController);
-		
+			
 		var args = {
-			q: this.opts.query,
-			since_id: this.itemsModel.items[0].id_str
+			"q": this.opts.query,
+			"count": 100
 		};
+
+		if (this.itemsModel.items && this.itemsModel.items[0]) {
+			args.since_id = this.itemsModel.items[0].id_str;
+		}
 		
 		Twitter.search(args, function(r){
-			var items = r.responseJSON.results;
+			var items = r.responseJSON.statuses;
 			this.gotItems(items);
 		}.bind(this));
 	},
@@ -167,7 +180,7 @@ StatusAssistant.prototype = {
 		for (i=0; i < this.itemsModel.items.length; i++) {
 			var tweet = this.itemsModel.items[i];
 			if (type === 'search') {
-				tweet = th.processSearch(tweet);	
+				tweet = th.processSearch(tweet);
 			}
 			else if (type === 'list'  || type === 'retweets') {
 				tweet = th.process(tweet);
@@ -197,6 +210,7 @@ StatusAssistant.prototype = {
 	updateCount: function() {
 		var count = this.itemsModel.items.length;
 		this.controller.get('footer').update(count + ' tweets');
+
 	},
 	handleCommand: function(event) {
 		if (event.type === Mojo.Event.back) {

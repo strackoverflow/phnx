@@ -1,10 +1,10 @@
-<div id="tweet-{-id_str}" x-mojo-tap-highlight='immediate' class="status-row #{-cssClass}">
+<div id="tweet-#{-id_str}" x-mojo-tap-highlight='immediate' class="status-row #{-cssClass}">
 	<div class="palm-row-wrapper row-wrapper">
-       	<div class="tweet-avatar" style="background-image: url(#{profile_image_url});"></div>
-       	<div class="content-wrapper">
-        	<div class='tweet-username'>#{-from_user}</div>
-			<div class='tweet-text'>#{-text}</div>
-			<div class='tweet-footer'><span class="top-tweet">#{-toptweet}</span> #{-time_str} <!-- #{-source} --></div>
+  	<div class="tweet-avatar" style="background-image: url(#{-user.profile_image_url});"></div>
+  	<div class="content-wrapper">
+    	<div class='tweet-username'>#{-user.screen_name}</div>
+			<div class='tweet-text'>#{-full_text}</div>
+			<div class='tweet-footer'><span class="top-tweet">#{-toptweet}</span> #{-time_str} #{-via} #{-source} #{-footer}<!-- #{-source} --></div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

@@ -243,23 +243,29 @@ ProfileAssistant.prototype = {
 	},
 	getMentions: function(opts) {
 		var Twitter = new TwitterAPI(this.account);
-		var query = '@' + this.user.screen_name;
+		
+		var args = {
+			"count": 100,
+			"include_entities": true, 
+			"q": '@' + this.user.screen_name
+		};
 		
 		for (var key in opts) {
-			query += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(opts[key]);
+			args[key] = opts[key];
 		}
 		
-		Twitter.search('@' + this.user.screen_name, function(response){
-			var items = response.responseJSON.results;
+		Twitter.search(args, function(response){
+			var items = response.responseJSON.statuses;
 			var th = new TweetHelper();
 			for (var i=0; i < items.length; i++) {
 				items[i] = th.processSearch(items[i]);
+				//items[i] = th.process(items[i]);
 			}
 			if (this.mentionsModel.items.length === 0) {
 				this.mentionsModel.items = items;
 			}
 			else {
-				for (i = items.length - 1; i >= 0; i--){
+				for (var i = items.length - 1; i >= 0; i--){
 					this.mentionsModel.items.splice(0, 0, items[i]);
 				}
 			}
