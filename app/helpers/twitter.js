@@ -33,6 +33,7 @@ var TwitterAPI = function(user, stageController) {
 		unfollowUser:		'friendships/destroy',
 		rateLimit:			'account/rate_limit_status',
 		trends:				'trends/place',
+		searchTweets:		'search/tweets',
 		savedSearches:		'saved_searches/list',
 		newDM:				'direct_messages/new',
 		lists:				'lists/list',
@@ -55,6 +56,7 @@ TwitterAPI.prototype = {
 		return this.apibase + '/' + this.version + '/' + endpoint + '.json';
 	},
 	timeline: function(panel, callback, args, assistant, resource) {
+		args.tweet_mode = 'extended';
 		this.sign('GET', this.url(this.endpoints[resource || panel.resource]), callback, args, {'panel': panel, 'assistant': assistant});
 	},
 	notificationCheck: function(resource, callback, args, user) {
@@ -68,7 +70,7 @@ TwitterAPI.prototype = {
 		this.sign('POST', this.url(this.endpoints[key]), callback, {'id': id}, {'assistant': assistant});
 	},
 	getStatus: function(id, callback, assistant) {
-		this.sign('GET', this.url(this.endpoints.statusShow + '/' + id), callback, {'include_entities': 'true'}, {'assistant': assistant});
+		this.sign('GET', this.url(this.endpoints.statusShow + '/' + id), callback, {'tweet_mode':'extended','include_entities': 'true'}, {'assistant': assistant});
 	},
 	postTweet: function(args, callback, assistant) {
 		this.sign('POST', this.url(this.endpoints.statusUpdate), callback, args, {'assistant':assistant});
@@ -81,9 +83,11 @@ TwitterAPI.prototype = {
 	},
 	getUserTweets: function(args, callback) {
 		// args.include_rts = true;
+		args.tweet_mode = 'extended';
 		this.sign('GET', this.url(this.endpoints.userTimeline), callback, args, {});
 	},
 	getFavorites: function(args, callback) {
+		args.tweet_mode = 'extended';
 		this.sign('GET', this.url(this.endpoints.userFavorites), callback, args, {});
 	},
 	followUserName: function(username, callback) {
@@ -128,12 +132,14 @@ TwitterAPI.prototype = {
 		this.sign('GET', this.url(this.endpoints.listSubscriptions), callback, args, {});
 	},
 	listStatuses: function(args, callback) {
+		args.tweet_mode = 'extended';
 		this.sign('GET', this.url(this.endpoints.listStatuses), callback, args, {});
 	},
 	search: function(query, callback) {
 		// Query can be either a string or an object literal with named parameters in it
-		var url = 'https://search.twitter.com/search.json';
-		var args = {"result_type":"mixed","rpp":"150","include_entities":"1"}; //DC Added include_entities for inline thumbs
+		//var url = 'https://search.twitter.com/search.json';
+		//var args = {"tweet_mode":"extended","result_type":"mixed","rpp":"150","include_entities":"1"}; //DC Added include_entities for inline thumbs
+		var args = {"tweet_mode":"extended","result_type":"mixed","include_entities":"1"};
 
 		if (typeof(query) === 'string') {
 			args.q = query;
@@ -150,16 +156,18 @@ TwitterAPI.prototype = {
 		// 	args.lang = locale;
 		// }
 
-		this.plain('GET', url, args, callback);
+		//this.plain('GET', url, args, callback);
+		this.sign('GET', this.url(this.endpoints.searchTweets), callback, args, {});
 	},
 	showRetweets: function(id, callback) {
 		var args = {
-			"count": 100
+			"count": 100,
+			"tweet_mode": "extended"
 		};
 		this.sign('GET', this.url(this.endpoints.statusRetweets + '/' + id), callback, args, {});
 	},
 	retweetsOfMe: function(callback) {
-		this.sign('GET', this.url(this.endpoints.retweetsOfMe), callback, {"count": 100}, {});
+		this.sign('GET', this.url(this.endpoints.retweetsOfMe), callback, {"tweet_mode":"extended","count": 100}, {});
 	},
 	block: function(id, callback) {
 		this.sign('POST', this.url(this.endpoints.block), callback, {'user_id': id}, {});

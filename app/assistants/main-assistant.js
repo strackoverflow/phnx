@@ -169,7 +169,7 @@ MainAssistant.prototype = {
 		this.savedSearchesModel = {items: []};
 		this.trendingTopicsModel = {items: []};
 		
-		this.controller.setupWidget('trending-topics-list',{itemTemplate: "templates/search-list-item",listTemplate: "templates/list", renderLimit: 10}, this.trendingTopicsModel);
+		this.controller.setupWidget('trending-topics-list',{itemTemplate: "templates/search-list-item",listTemplate: "templates/list", renderLimit: 50}, this.trendingTopicsModel);
 		this.controller.setupWidget('saved-searches-list',{itemTemplate: "templates/search-list-item",listTemplate: "templates/list", renderLimit: 30}, this.savedSearchesModel);
 		
 		this.listsModel = {items: []};
@@ -465,7 +465,8 @@ MainAssistant.prototype = {
 	getTweets: function(panel, lastId, maxId) {		
 		var args = {
 			'count': this.count,
-			'include_entities': 'true'
+			'include_entities': 'true',
+			'full_text': 'true'
 		};
 		
 		if (lastId) {

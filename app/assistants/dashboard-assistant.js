@@ -49,6 +49,30 @@ DashboardAssistant.prototype = {
 		var infoElement = this.controller.get('dashboardinfo');
 		infoElement.innerHTML = renderedInfo;
 		this.listenDashboard();
+		
+		this.getTweaksPrefs = new Mojo.Service.Request("palm://org.webosinternals.tweaks.prefs/", {
+			method: 'get', parameters: {'owner': "bluetooth-mbw150",
+			keys: ["mbwPhnx","mbwPhnxColour","mbwAll"]},
+			onSuccess: function(response) {
+				if(response) {
+					if(response.mbwPhnx == true && response.mbwAll == true) {
+						var notificationColour = 0xCA;
+						if(response.mbwPhnxColour){
+							notificationColour = parseInt(response.mbwPhnxColour,16);
+						}
+						//If true - Report BannerMessage to SE-Watch MBW150
+						var request = new Mojo.Service.Request('palm://com.palm.applicationManager', {
+					        method: 'open',
+					        parameters: {
+					            id: "de.metaviewsoft.mwatch",
+					            params: {command: "SMS", info: bannerMessage, wordwrap: true, appid: "com.davidstrack.phnx.free", color: notificationColour}
+				   	    	 },
+				     	   	onSuccess: function() {},
+				       	  	onFailure: function() {}
+				          	});
+					}
+				}
+			}.bind(this)});
 	},
 	listenDashboard: function() {
 		this.controller.listen(this.controller.get('dashboard-icon'), Mojo.Event.tap, this.iconTapped.bind(this));

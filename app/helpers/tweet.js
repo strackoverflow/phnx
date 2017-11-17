@@ -32,7 +32,12 @@ TweetHelper.prototype = {
 			var links = tweet.entities.urls;
 			for (var i = links.length - 1; i >= 0; i--){
 				if (links[i].expanded_url !== null) {
-					tweet.text = tweet.text.replace(new RegExp(links[i].url, 'g'), links[i].expanded_url);
+					//tweet.text = tweet.text.replace(new RegExp(links[i].url, 'g'), links[i].expanded_url);
+					if(typeof(tweet.text) !== "undefined"){
+						tweet.text = tweet.text.replace(new RegExp(links[i].url, 'g'), links[i].expanded_url);
+					} else {
+						tweet.full_text = tweet.full_text.replace(new RegExp(links[i].url, 'g'), links[i].expanded_url);
+					}
 				}
 			}	
 		}
@@ -41,8 +46,13 @@ TweetHelper.prototype = {
 		tweet.time_str = d.toRelativeTime(1500);
 		
 		//keep the plaintext version for quote-style RTs (so HTML doesn't get tossed in there)
-		tweet.stripped = tweet.text;
-		tweet.text = tweet.text.parseLinks();
+		if(typeof(tweet.text) !== "undefined"){
+			tweet.stripped = tweet.text;
+			tweet.text = tweet.text.parseLinks();
+		} else {
+			tweet.stripped = tweet.full_text;
+			tweet.full_text = tweet.full_text.parseLinks();
+		}
 		return tweet;
 	},
 	processSearch: function(tweet) {
@@ -56,8 +66,14 @@ TweetHelper.prototype = {
 			tweet.toptweet = 'Top Tweet';
 		}
 		//keep the plaintext version for quote-style RTs (so HTML doesn't get tossed in there)
-		tweet.stripped = tweet.text;
-		tweet.text = tweet.text.parseLinks();
+		if(typeof(tweet.text) !== "undefined"){
+			tweet.stripped = tweet.text;
+			tweet.text = tweet.text.parseLinks();
+		} else {
+			tweet.stripped = tweet.full_text;
+			tweet.full_text = tweet.full_text.parseLinks();
+		}
+
 		return tweet;
 	},
 	isRetweeted: function(tweet, user) {
